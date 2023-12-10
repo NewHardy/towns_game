@@ -29,10 +29,10 @@ public class Main
                 {
                     String myFirstLetter=String.valueOf(town.charAt(0));
                     String AILastLetter=String.valueOf(lastTown.charAt(lastTown.length()-1));
-                    if (!myLastLetter.equalsIgnoreCase(AILastLetter))
+                    if (!myFirstLetter.equalsIgnoreCase(AILastLetter))
                     {
                         System.out.println("you lost");
-                        System.out.println("luck next time");
+                        lost=true;
                         break;
                     }
                 }
@@ -40,17 +40,17 @@ public class Main
             for (String city : database)
             {
                 String AIFistLetter=String.valueOf(city.charAt(0));
-                if (myLastLetter.equalsIgnoreCase(AIFistLetter))
+                if (myLastLetter.equalsIgnoreCase(AIFistLetter)&&!lost)
                 {
                     lastTown=city;
                     System.out.println(city);
-                    System.out.println("your turn");
-                    towns(database);
+                    if (!myLastLetter.equalsIgnoreCase(AIFistLetter))
+                    {
+                        System.out.println("you won");
+                        break;
+                    }
                 }
             }
-
-            System.out.println("you won");
-            break;
         }
     }
 }
